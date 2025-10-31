@@ -15,6 +15,7 @@ dependencies = [
 
 
 [tool.poetry.scripts]
+filter_after_date = "src.solsquad_bootcamp.filter_after_date:main"
 extract_all = "src.solsquad_bootcamp.main:main"
 extract_filtered = "src.solsquad_bootcamp.main:filtered"
 afterdate = "src.solsquad_bootcamp.afterdate:main"
