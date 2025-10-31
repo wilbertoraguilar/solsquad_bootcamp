@@ -32,8 +32,24 @@ def main(path: str = "data/mock-data.csv") -> None:
     except Exception:
         typer.echo(str(df.head()))
     output = typer.prompt("Extracted file name")
-    hoy = pd.Timestamp('today').normalize()
 
-    filtered = df[ ((hoy - pd.to_datetime(df['birthdate'])) / np.timedelta64(1, 'D')) / 365.25 < 3 ]
-    filtered.to_csv("data/" + output, index=False)
+    # La fecha en formato 'YYYY-MM-DD' porque los datos base están
+    # en ese formato y será más fácil procesarlos
+    fecha_input = input("Introduzca una fecha en formato 'YYYY-MM-DD': ")
+
+    # Se transforma el String en dato tipo fecha
+    fecha_input = pd.to_datetime(fecha_input)
+
+    '''
+        Filtrado para el caso 1.
+        Para calcular que sean menores de 3 años he calculado la diferencia en dias entre
+        la fecha de hoy y la de creación de cuenta y la he dividido entre 365.25 para sacar 
+        la difrencia de años entre una y otra 
+
+        hoy = pd.Timestamp('today').normalize() #Normalize para que no coja la hora/minuto/día
+        filtered_1 = df[ ((hoy - pd.to_datetime(df['birthdate'])) / np.timedelta64(1, 'D')) / 365.25 < 3 ]
+    '''
+    filtered_2 = df[ pd.to_datetime(df['birthdate']) > fecha_input]
+    filtered_2.to_csv("data/" + output, index=False)
+    
     print("File saved as: data/" + output)
