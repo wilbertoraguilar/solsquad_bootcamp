@@ -30,6 +30,10 @@ def main(path: str = "data/mock-data.csv") -> None:
         typer.echo(df.head(n=5).to_string(index=False))
     except Exception:
         typer.echo(str(df.head()))
+
     output = typer.prompt("Extracted file name")
-    df.to_csv("data/" + output, index=False)
+    date = typer.prompt("Enter the limit date (YYYY-MM-DD). Only accounts created *after* this date will be included:")
+    filtered = df[df['birthdate'] > date]
+    filtered.to_csv("data/" + output, index=False)
+    
     print("File saved as: data/" + output)
