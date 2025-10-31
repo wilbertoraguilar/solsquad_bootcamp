@@ -14,7 +14,13 @@ def read_csv_to_df(path: str) -> Any:
     if not os.path.exists(path):
         raise FileNotFoundError(f"CSV file not found at: {path}")
 
-    return pd.read_csv(path)
+    df = pd.read_csv(path)
+
+## we filter all rows that show accounts from year 2023
+    df['birthdate'] = pd.to_datetime(df["birthdate"], errors= 'coerce')
+    df = df[df["birthdate"].dt.year == 2023]
+
+    return df
 
 
 def main(path: str = "data/mock-data.csv") -> None:
@@ -30,10 +36,6 @@ def main(path: str = "data/mock-data.csv") -> None:
         typer.echo(df.head(n=5).to_string(index=False))
     except Exception:
         typer.echo(str(df.head()))
-
     output = typer.prompt("Extracted file name")
-    date = typer.prompt("Enter the limit date (YYYY-MM-DD). Only accounts created *after* this date will be included:")
-    filtered = df[df['birthdate'] > date]
-    filtered.to_csv("data/" + output, index=False)
-    
+    df.to_csv("data/" + output, index=False)
     print("File saved as: data/" + output)
