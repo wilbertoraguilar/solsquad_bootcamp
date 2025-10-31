@@ -7,7 +7,6 @@ import typer
 import pandas as pd
 
 
-# === 1️⃣ Definición de la función para leer el CSV ===
 def read_csv_to_df(path: str) -> Any:
     if not os.path.isabs(path):
         repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -19,7 +18,6 @@ def read_csv_to_df(path: str) -> Any:
     return pd.read_csv(path)
 
 
-# === 2️⃣ Función principal (usa la anterior) ===
 def main(path: str = "data/mock-data.csv") -> None:
     try:
         df = read_csv_to_df(path)
@@ -46,4 +44,3 @@ def main(path: str = "data/mock-data.csv") -> None:
     os.makedirs("data", exist_ok=True)
     df.to_csv("data/" + output, index=False)
     print("✅ File saved as: data/" + output)
-
