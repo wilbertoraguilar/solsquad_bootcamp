@@ -1,1 +1,8 @@
+# Python
 __pycache__/
+*.pyc
+
+# Entornos virtuales (tampoco deberían subirse)
+.venv/
+venv/
+env/
