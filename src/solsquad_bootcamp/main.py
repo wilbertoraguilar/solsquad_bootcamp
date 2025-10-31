@@ -25,11 +25,11 @@ def main(path: str = "data/mock-data.csv") -> None:
         raise typer.Exit(code=1)
 
     typer.echo(f"Loaded '{path}': {len(df)} rows x {len(df.columns)} cols")
+    typer.echo("First 5 rows:")
     try:
-        typer.echo(df.head().to_string(index=False))
+        typer.echo(df.head(n=5).to_string(index=False))
     except Exception:
         typer.echo(str(df.head()))
-
-
-if __name__ == "__main__":
-    main()
+    output = typer.prompt("Extracted file name")
+    df.to_csv("data/" + output, index=False)
+    print("File saved as: data/" + output)
