@@ -31,5 +31,19 @@ def main(path: str = "data/mock-data.csv") -> None:
     except Exception:
         typer.echo(str(df.head()))
     output = typer.prompt("Extracted file name")
+
+    # Filter account open after a given date
+    date_str = typer.prompt("Enter the date (YYYY-MM-DD)")
+
+    # Check input date format
+    try:
+        pd.to_datetime(date_str, format="%Y-%m-%d")
+    except ValueError:
+        typer.echo("Invalid date format. Please use YYYY-MM-DD.")
+        raise typer.Exit(code=1)
+
+    # Filter the dataframe
+    df = df[df["birthdate"] > date_str]
+
     df.to_csv("data/" + output, index=False)
     print("File saved as: data/" + output)
