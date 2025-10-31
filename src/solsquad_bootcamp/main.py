@@ -30,6 +30,14 @@ def main(path: str = "data/mock-data.csv") -> None:
         typer.echo(df.head(n=5).to_string(index=False))
     except Exception:
         typer.echo(str(df.head()))
+    print("If you want to filter the data after a date, please provide the date in YYYY-MM-DD format.")
+    date = typer.prompt("Date (leave blank to skip)", default="")
+    if date:
+        try:
+            df = df[df["birthdate"] > date]
+        except Exception as exc:
+            print(f"Error filtering data: {exc}")
+            raise
     output = typer.prompt("Extracted file name")
     df.to_csv("data/" + output, index=False)
     print("File saved as: data/" + output)
