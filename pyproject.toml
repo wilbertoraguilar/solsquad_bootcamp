@@ -16,6 +16,7 @@ dependencies = [
 
 [tool.poetry.scripts]
 extract_all = "src.solsquad_bootcamp.main:main"
+filter_accounts = "src.solsquad_bootcamp.filter_accounts:main"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
