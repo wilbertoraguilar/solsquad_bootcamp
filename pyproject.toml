@@ -16,7 +16,11 @@ dependencies = [
 
 [tool.poetry.scripts]
 extract_all = "src.solsquad_bootcamp.main:main"
+<<<<<<< HEAD
 new = "new.py"
+=======
+extract_filtered = "src.solsquad_bootcamp.main:filtered"
+>>>>>>> 15735e7 (Problem solved: Filter accountswith given age. Note that age is requested through the prompt)
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
