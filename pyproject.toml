@@ -15,11 +15,14 @@ dependencies = [
 
 
 [tool.poetry.scripts]
+filter_after_date = "src.solsquad_bootcamp.filter_after_date:main"
 extract_all = "src.solsquad_bootcamp.main:main"
+extract_filtered = "src.solsquad_bootcamp.main:filtered"
 afterdate = "src.solsquad_bootcamp.afterdate:main"
 filter-2023 = "src.solsquad_bootcamp.filter-2023:main"
 filter_accounts = "src.solsquad_bootcamp.filter_accounts:main"
 extract_age = "src.solsquad_bootcamp.main_mod:main"
+devarsuarez = "src.solsquad_bootcamp.devarsuarez:main"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
