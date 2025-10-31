@@ -16,6 +16,7 @@ dependencies = [
 
 [tool.poetry.scripts]
 extract_all = "src.solsquad_bootcamp.main:main"
+new = "new.py"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
