@@ -1,1 +1,9 @@
-__pycache__/__pycache__/
+# Ignorar archivos temporales de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Ignorar CSV generados automáticamente
+data/*.csv
+!data/mock-data.csv
