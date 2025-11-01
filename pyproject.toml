@@ -15,6 +15,7 @@ dependencies = [
 
 
 [tool.poetry.scripts]
+mi_script = "src.solsquad_bootcamp.mi_script:main"
 filter_after_date = "src.solsquad_bootcamp.filter_after_date:main"
 extract_all = "src.solsquad_bootcamp.main:main"
 new = "new.py"
